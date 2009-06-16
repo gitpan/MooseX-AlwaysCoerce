@@ -18,11 +18,11 @@ MooseX::AlwaysCoerce - Automatically enable coercions for Moose attributes
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -45,6 +45,8 @@ coercion not run?" only to find out that you forgot C<< coerce => 1 >> ?
 Just load this module in your L<Moose> class and C<< coerce => 1 >> will be
 enabled for every attribute and class attribute automatically.
 
+Use C<< coerce => 0 >> to disable a coercion explicitly.
+
 =cut
 
 {
@@ -61,7 +63,11 @@ enabled for every attribute and class attribute automatically.
     around add_class_attribute => sub {
         my $next = shift;
         my $self = shift;
-        $self->$next(@_, coerce => 1);
+        my ($what, %opts) = @_;
+
+        $opts{coerce} = 1 unless exists $opts{coerce};
+
+        $self->$next($what, %opts);
     };
 }
 
