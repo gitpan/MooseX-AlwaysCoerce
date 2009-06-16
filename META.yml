@@ -21,7 +21,11 @@ no_index:
 provides:
   MooseX::AlwaysCoerce:
     file: lib/MooseX/AlwaysCoerce.pm
-    version: 0.01
+    version: 0.02
+  MooseX::AlwaysCoerce::Role::Meta::Attribute:
+    file: lib/MooseX/AlwaysCoerce.pm
+  MooseX::AlwaysCoerce::Role::Meta::Class:
+    file: lib/MooseX/AlwaysCoerce.pm
 requires:
   Moose: 0
   MooseX::ClassAttribute: 0
@@ -29,4 +33,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/rkitover/mx-alwayscoerce.git
-version: 0.01
+version: 0.02
