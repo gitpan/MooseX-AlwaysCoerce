@@ -16,4 +16,5 @@ MANIFEST			This list of files
 META.yml
 README
 t/01-basic.t
+t/02-mx-m-s.t
 t/pod.t

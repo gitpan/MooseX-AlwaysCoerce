@@ -18,11 +18,11 @@ MooseX::AlwaysCoerce - Automatically enable coercions for Moose attributes
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 =head1 SYNOPSIS
 
@@ -81,22 +81,22 @@ Use C<< coerce => 0 >> to disable a coercion explicitly.
     };
 }
 
+my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
+    install => [ qw(import unimport) ],
+    class_metaroles => {
+        attribute   => ['MooseX::AlwaysCoerce::Role::Meta::Attribute'],
+        class       => ['MooseX::AlwaysCoerce::Role::Meta::Class'],
+    },
+);
+
 sub init_meta {
-    shift;
-    my %options = @_;
+    my ($class, %options) = @_;
     my $for_class = $options{for_class};
 
     MooseX::ClassAttribute->import({ into => $for_class });
 
-    Moose::Util::MetaRole::apply_metaclass_roles(
-        for_class => $for_class,
-        attribute_metaclass_roles =>
-            ['MooseX::AlwaysCoerce::Role::Meta::Attribute'],
-        metaclass_roles =>
-            ['MooseX::AlwaysCoerce::Role::Meta::Class'],
-    );
-
-    return $for_class->meta;
+    # call generated method to do the rest of the work.
+    goto $init_meta;
 }
 
 =head1 AUTHOR
@@ -106,6 +106,7 @@ Rafael Kitover, C<< <rkitover at cpan.org> >>
 =head1 CONTRIBUTORS
 
 Schwern: Michael G. Schwern <mschwern@cpan.org>
+Ether: Karen Etheridge <ether@cpan.org>
 
 =head1 BUGS
 
