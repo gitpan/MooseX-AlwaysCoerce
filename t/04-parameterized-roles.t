@@ -1,16 +1,22 @@
 #!/usr/bin/env perl
+
 use strict;
 use warnings;
-
-use Test::More tests => 8;
+use Test::More;
 use Test::Exception;
-use Test::NoWarnings;
 
-{
-    package MyClass;
-    use Moose;
+unless (eval { require MooseX::Role::Parameterized }) {
+    plan skip_all => 'This test needs MooseX::Role::Parameterized';
+}
+
+eval <<'EOF';
+    package Role;
+    use MooseX::Role::Parameterized;
     use MooseX::AlwaysCoerce;
     use Moose::Util::TypeConstraints;
+
+    # I do nothing!
+    role {};
 
     subtype 'MyType', as 'Int';
     coerce 'MyType', from 'Str', via { length $_ };
@@ -29,8 +35,19 @@ use Test::NoWarnings;
 
     class_has uncoerced_class_attr => (is => 'rw', isa => 'Uncoerced');
 
-    class_has untyped_class_attr => (is => 'rw');
+    package Foo;
+    use Moose;
+    with 'Role';
+EOF
+
+if ($@) {
+    plan skip_all =>
+'MooseX::ClassAttribute is currently incompatible with MooseX::Role::Parameterized';
 }
+
+plan tests => 8;
+
+eval 'use Test::NoWarnings';
 
 ok( (my $instance = MyClass->new), 'instance' );
 

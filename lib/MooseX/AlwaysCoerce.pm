@@ -18,11 +18,11 @@ MooseX::AlwaysCoerce - Automatically enable coercions for Moose attributes
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =cut
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 =head1 SYNOPSIS
 
@@ -54,39 +54,52 @@ Use C<< coerce => 0 >> to disable a coercion explicitly.
     use namespace::autoclean;
     use Moose::Role;
 
-    has coerce => (
-        lazy    => 1,
-        reader  => "should_coerce",
-        default => sub {
-            return 1 if shift->type_constraint->has_coercion;
-            return 0;
-        }
-    );
+    around should_coerce => sub {
+        my $orig = shift;
+        my $self = shift;
 
+        my $current_val = $self->$orig(@_);
+
+        return $current_val if defined $current_val;
+
+        return 1 if $self->type_constraint->has_coercion;
+        return 0;
+    };
 
     package MooseX::AlwaysCoerce::Role::Meta::Class;
     use namespace::autoclean;
     use Moose::Role;
     use Moose::Util::TypeConstraints;
+    use MooseX::ClassAttribute;
 
     around add_class_attribute => sub {
         my $next = shift;
         my $self = shift;
         my ($what, %opts) = @_;
 
+        return unless exists $opts{isa};
+
         my $type = Moose::Util::TypeConstraints::find_or_parse_type_constraint($opts{isa});
-        $opts{coerce} = 1 if !exists $opts{coerce} and $type->has_coercion;
+        $opts{coerce} = 1 if not exists $opts{coerce} and $type->has_coercion;
 
         $self->$next($what, %opts);
     };
 }
 
 my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
+
     install => [ qw(import unimport) ],
+
     class_metaroles => {
         attribute   => ['MooseX::AlwaysCoerce::Role::Meta::Attribute'],
         class       => ['MooseX::AlwaysCoerce::Role::Meta::Class'],
     },
+
+    role_metaroles => {
+        # applied_attribute should be available soon, for now roles are borked
+        # applied_attribute   => ['MooseX::AlwaysCoerce::Role::Meta::Attribute'],
+        role                => ['MooseX::AlwaysCoerce::Role::Meta::Class'],
+    }
 );
 
 sub init_meta {
@@ -146,7 +159,7 @@ Dave Rolsky, for telling me how to do it the L<Moose> way.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright (c) 2009 Rafael Kitover
+Copyright (c) 2009-2010 Rafael Kitover
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

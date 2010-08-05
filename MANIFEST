@@ -17,4 +17,6 @@ META.yml
 README
 t/01-basic.t
 t/02-mx-m-s.t
+t/03-roles.t
+t/04-parameterized-roles.t
 t/pod.t
