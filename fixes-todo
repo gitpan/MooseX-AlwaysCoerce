@@ -1,0 +1,36 @@
+8:50 < Caelum> ether: who are you on cpan
+19:22 < Caelum> sartak: mx::classattribute breaks mxrp :(
+19:38 < Caelum> ether: so I'll check in a test into mxca repo?
+19:47 < Caelum> ether: well here's a simple test to hopefully aid in debugging
+                efforts:
+http://git.shadowcat.co.uk/gitweb/gitweb.cgi?p=gitmo/MooseX-ClassAttribute.git;a=commitdiff;h=8017308bf29f3f4592d25ec79c6d036c90a82ea9
+20:16 < Caelum> ether: uploaded new mx::alwayscoerce with the classattribute
+                isa fix (and test), 0.08, also added you to committers on
+                github and comaint on pause
+20:17 < Caelum> ether: and todo-ified the tests of corse
+20:17 <@ether> sweet
+20:22  * GumbyNET5 CPAN Upload: MooseX-AlwaysCoerce-0.07 by RKITOVER
+20:22  * GumbyNET5 CPAN Upload: MooseX-AlwaysCoerce-0.08 by RKITOVER
+20:43 < Caelum> ether: regular attributes without isa didn't work either, fixed
+20:48 < Caelum> sartak:
+http://git.shadowcat.co.uk/gitweb/gitweb.cgi?p=gitmo/MooseX-ClassAttribute.git;a=commitdiff;h=1403ec92341bd56c388d646adc38ff07435dc12d
+20:50 < Caelum> forgot to add Test::Exception
+20:52 <@ether> I'll bang on some tests a bit tomorrow; too tired tonight :)
+20:52 <@ether> plus my laptop is being appropriated to watch Star Trek on
+20:56 <@sartak> wtf, using class_has inside role {}??
+21:01  * GumbyNET5 CPAN Upload: MooseX-AlwaysCoerce-0.09 by RKITOVER
+21:57 < Caelum> sartak: yeah, what's wrong with it being inside role
+21:57 <@sartak> does that work? if so it's newer than last time I used MXCA
+21:58 <@ether> I'm not sure now whether that ever did work
+21:58 <@ether> however it should be possible to do with MXRP::Extending
+21:59 <@ether> I'll poke at that tomorrow while I'm pretending to write useless
+               documentation for $work
+21:59  * ether coughs
+22:00 <@sartak> before I saw the test I figured Caelum was adding a class
+                attribute to the parameters object
+22:00 <@doy> sartak: yeah, mxca supports being used in roles since a couple
+             months ago
+22:00 <@doy> i think from the role attribute refactor
+22:00 <@sartak> cool I guess
+22:01 <@doy> yeah, something like that
+

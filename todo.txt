@@ -1,0 +1,22 @@
+- try out a CPAN/PAUSE upload!
+kkk
+
+
+- rename MooseX::AlwaysCoerce::Role::Meta::Attribute to
+  MooseX::AlwaysCoerce::Meta::Trait::Attribute and likewise for other classes
+
+- add Test::NoWarnings to unit tests
+- switch Try::Tiny try{} to Test::Exception lives_ok {}
+- try out Dist::Zilla too
+    meta-info:
+        - repository location
+        - authors
+        - MANIFEST.SKIP
+
+- remove use lib 'lib'; from unit tests ('make test' takes care of this)
+- add author tests - pod, eol, notabs etc
+- more detailed docs?
+
+
+
+

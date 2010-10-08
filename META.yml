@@ -8,6 +8,7 @@ build_requires:
   Test::Exception: 0
   Test::More: 0.94
   Test::NoWarnings: 0
+  Test::Requires: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
@@ -24,7 +25,7 @@ no_index:
 provides:
   MooseX::AlwaysCoerce:
     file: lib/MooseX/AlwaysCoerce.pm
-    version: 0.09
+    version: 0.10
   MooseX::AlwaysCoerce::Role::Meta::Attribute:
     file: lib/MooseX/AlwaysCoerce.pm
   MooseX::AlwaysCoerce::Role::Meta::Class:
@@ -35,5 +36,5 @@ requires:
   namespace::autoclean: 0
 resources:
   license: http://dev.perl.org/licenses/
-  repository: git://github.com/rkitover/mx-alwayscoerce.git
-version: 0.09
+  repository: git://github.com/ketheridge/mx-alwayscoerce.git
+version: 0.10

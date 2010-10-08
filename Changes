@@ -1,5 +1,9 @@
 Revision history for MooseX-AlwaysCoerce
 
+0.10  2010-10-08 10:03:53 PDT
+    - avoid giving class attributes to the metaclass, which was triggering an
+      edge case bug in metaclass compat (Jesse Luehrs)
+
 0.09  2010-08-05 03:42:07
     - support attributes without isa, correctly
 
