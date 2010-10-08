@@ -1,7 +1,4 @@
-.Makefile.swp
-ac-fixes
 Changes
-fixes-todo
 inc/Module/AutoInstall.pm
 inc/Module/Install.pm
 inc/Module/Install/AutoInstall.pm
@@ -16,12 +13,11 @@ inc/Module/Install/WriteAll.pm
 lib/MooseX/AlwaysCoerce.pm
 Makefile.PL
 MANIFEST			This list of files
+MANIFEST.SKIP
 META.yml
-MooseX-AlwaysCoerce-0.09.tar.gz
 README
 t/01-basic.t
 t/02-mx-m-s.t
 t/03-roles.t
 t/04-parameterized-roles.t
 t/pod.t
-todo.txt

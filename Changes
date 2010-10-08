@@ -1,5 +1,8 @@
 Revision history for MooseX-AlwaysCoerce
 
+0.11  2010-10-08 12:05:42 PDT
+    - fix mangled distribution tarball (Karen Etheridge)
+
 0.10  2010-10-08 10:03:53 PDT
     - avoid giving class attributes to the metaclass, which was triggering an
       edge case bug in metaclass compat (Jesse Luehrs)
