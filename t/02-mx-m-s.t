@@ -8,7 +8,7 @@ use Test::Requires {
     'MooseX::Method::Signatures' => 0.01,
 };
 
-use Test::Exception;
+use Test::Fatal;
 use Test::NoWarnings;
 
 {
@@ -35,7 +35,7 @@ ok( (my $instance = MyClass->new), 'instance' );
 TODO: {
     local $TODO = 'need rafl to help with implementation';
 
-    lives_and {
+    is( exception {
         is $instance->foo(foo => "text", bar => 42), '4 42';
-    } 'method called with coerced and uncoerced parameters';
+    }, undef, 'method called with coerced and uncoerced parameters' );
 }

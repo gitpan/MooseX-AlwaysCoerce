@@ -2,8 +2,8 @@
 use strict;
 use warnings;
 
-use Test::More tests => 10;
-use Test::Exception;
+use Test::More tests => 16;
+use Test::Fatal;
 use Test::NoWarnings;
 
 {
@@ -36,38 +36,68 @@ use Test::NoWarnings;
 
 ok( (my $instance = MyClass->new), 'instance' );
 
-lives_and {
-    $instance->foo('bar');
-    is $instance->foo, 3;
-} 'attribute coercion ran';
+is(
+    exception {
+        $instance->foo('bar');
+        is $instance->foo, 3;
+    },
+    undef,
+    'attribute coercion ran',
+);
 
-lives_and {
-    $instance->bar('baz');
-    is $instance->bar, 3;
-} 'class attribute coercion ran';
+is(
+    exception {
+        $instance->bar('baz');
+        is $instance->bar, 3;
+    },
+    undef,
+    'class attribute coercion ran',
+);
 
-dies_ok { $instance->baz('quux') }
-    'class attribute coercion did not run with coerce => 0';
+isnt(
+    exception { $instance->baz('quux') },
+    undef,
+    'class attribute coercion did not run with coerce => 0',
+);
 
-dies_ok { $instance->quux('mtfnpy') }
-    'attribute coercion did not run with coerce => 0';
+isnt(
+    exception{ $instance->quux('mtfnpy') },
+    undef,
+    'attribute coercion did not run with coerce => 0',
+);
 
-lives_and {
-    $instance->uncoerced_attr(10);
-    is $instance->uncoerced_attr(10), 10;
-} 'set attribute having type with no coercion and no coerce=0';
+is(
+    exception {
+        $instance->uncoerced_attr(10);
+        is $instance->uncoerced_attr(10), 10;
+    },
+    undef,
+    'set attribute having type with no coercion and no coerce=0',
+);
 
-lives_and {
-    $instance->uncoerced_class_attr(10);
-    is $instance->uncoerced_class_attr(10), 10;
-} 'set class attribute having type with no coercion and no coerce=0';
+is(
+    exception {
+        $instance->uncoerced_class_attr(10);
+        is $instance->uncoerced_class_attr(10), 10;
+    },
+    undef,
+    'set class attribute having type with no coercion and no coerce=0',
+);
 
-lives_and {
-    $instance->untyped_attr(10);
-    is $instance->untyped_attr, 10;
-} 'set untyped attribute';
+is(
+    exception {
+        $instance->untyped_attr(10);
+        is $instance->untyped_attr, 10;
+    },
+    undef,
+    'set untyped attribute',
+);
 
-lives_and {
-    $instance->untyped_class_attr(10);
-    is $instance->untyped_class_attr, 10;
-} 'set untyped class attribute';
+is(
+    exception {
+        $instance->untyped_class_attr(10);
+        is $instance->untyped_class_attr, 10;
+    },
+    undef,
+    'set untyped class attribute',
+);

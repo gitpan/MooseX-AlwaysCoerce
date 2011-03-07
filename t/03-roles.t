@@ -2,8 +2,8 @@
 use strict;
 use warnings;
 
-use Test::More tests => 10;
-use Test::Exception;
+use Test::More tests => 15;
+use Test::Fatal;
 use Test::NoWarnings;
 
 {
@@ -45,39 +45,37 @@ ok( (my $instance = MyClass->new), 'instance' );
 {
     local $TODO = 'waiting on Moose changes for role support';
 
-    lives_and {
+    is( exception {
         $instance->foo('bar');
         is $instance->foo, 3;
-    } 'attribute coercion ran';
+    }, undef, 'attribute coercion ran' );
 }
 
-lives_and {
+is( exception {
     $instance->bar('baz');
     is $instance->bar, 3;
-} 'class attribute coercion ran';
+}, undef, 'class attribute coercion ran' );
 
-dies_ok { $instance->baz('quux') }
-    'class attribute coercion did not run with coerce => 0';
+isnt( exception { $instance->baz('quux') }, undef, 'class attribute coercion did not run with coerce => 0' );
 
-dies_ok { $instance->quux('mtfnpy') }
-    'attribute coercion did not run with coerce => 0';
+isnt( exception { $instance->quux('mtfnpy') }, undef, 'attribute coercion did not run with coerce => 0' );
 
-lives_and {
+is( exception {
     $instance->uncoerced_attr(10);
     is $instance->uncoerced_attr(10), 10;
-} 'set attribute having type with no coercion and no coerce=0';
+}, undef, 'set attribute having type with no coercion and no coerce=0' );
 
-lives_and {
+is( exception {
     $instance->uncoerced_class_attr(10);
     is $instance->uncoerced_class_attr(10), 10;
-} 'set class attribute having type with no coercion and no coerce=0';
+}, undef, 'set class attribute having type with no coercion and no coerce=0' );
 
-lives_and {
+is( exception {
     $instance->untyped_attr(10);
     is $instance->untyped_attr, 10;
-} 'set untyped attribute';
+}, undef, 'set untyped attribute' );
 
-lives_and {
+is( exception {
     $instance->untyped_class_attr(10);
     is $instance->untyped_class_attr, 10;
-} 'set untyped class attribute';
+}, undef, 'set untyped class attribute' );
