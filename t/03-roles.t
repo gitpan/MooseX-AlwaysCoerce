@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 15;
+use Test::More tests => 16;
 use Test::Fatal;
 use Test::NoWarnings;
 
@@ -43,12 +43,12 @@ use Test::NoWarnings;
 ok( (my $instance = MyClass->new), 'instance' );
 
 {
-    local $TODO = 'waiting on Moose changes for role support';
+    local $TODO = (Moose->VERSION < 1.9900 ? 'waiting on Moose changes for role support' : undef);
 
     is( exception {
         $instance->foo('bar');
-        is $instance->foo, 3;
     }, undef, 'attribute coercion ran' );
+    is($instance->foo, 3);
 }
 
 is( exception {

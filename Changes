@@ -1,5 +1,9 @@
 Revision history for MooseX-AlwaysCoerce
 
+0.14 2011-02-08
+    - add support within roles, using the new applied_attribute feature
+      available in Moose 1.99/2.0 (doy)
+
 0.13 2011-02-07
     - fixed class attribute and parameterized role TODO tests to work again
       with the latest MooseX::Role::Parameterized (Karen Etheridge)
