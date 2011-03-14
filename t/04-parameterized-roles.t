@@ -6,13 +6,13 @@ use Test::More;
 use Test::Fatal;
 
 use Test::Requires {
-    'MooseX::Role::Parameterized' => 0.01,
+    'MooseX::Role::Parameterized' => 0.25,
 };
 
 eval <<'EOF';
     package Role;
-    use MooseX::Role::Parameterized;
-    use MooseX::ClassAttribute;
+    use MooseX::Role::Parameterized 0.25;
+    use MooseX::ClassAttribute 0.24;
     use MooseX::AlwaysCoerce;
     use Moose::Util::TypeConstraints;
 

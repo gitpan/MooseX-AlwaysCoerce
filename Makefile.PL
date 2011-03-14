@@ -12,7 +12,7 @@ test_requires 'Test::Requires';
 
 requires 'Moose';
 requires 'namespace::autoclean';
-requires 'MooseX::ClassAttribute';
+requires 'MooseX::ClassAttribute' => '0.24';
 
 auto_provides;
 auto_install;
