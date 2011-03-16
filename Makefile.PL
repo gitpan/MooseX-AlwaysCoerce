@@ -11,8 +11,9 @@ test_requires 'Test::NoWarnings';
 test_requires 'Test::Requires';
 
 requires 'Moose';
-requires 'namespace::autoclean';
-requires 'MooseX::ClassAttribute' => '0.24';
+requires 'namespace::autoclean'     => '0.12';
+requires 'MooseX::ClassAttribute'   => '0.24';
+requires 'Package::Stash'           => '0.26';
 
 auto_provides;
 auto_install;

@@ -1,8 +1,14 @@
 Revision history for MooseX-AlwaysCoerce
 
+0.16 2011-03-16
+    - bump minimum required Package::Stash and namespace::autoclean versions
+      in dependencies, to reduce invalid cpantesters reports. (The toolchain
+      already reports on conflicting Package::Stash, but not everything
+      is catching that.)
+
 0.15 2011-03-14
-    - bump minimum required versions in dependencies, to ensure compatibility
-      with the upcoming Moose 2.0 release.
+    - bump minimum required MooseX::ClassAttribute version in dependencies, to
+      ensure compatibility with the upcoming Moose 2.0 release.
 
 0.14 2011-03-08
     - add support within roles, using the new applied_attribute feature

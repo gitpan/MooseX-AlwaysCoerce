@@ -25,7 +25,7 @@ no_index:
 provides:
   MooseX::AlwaysCoerce:
     file: lib/MooseX/AlwaysCoerce.pm
-    version: 0.15
+    version: 0.16
   MooseX::AlwaysCoerce::Role::Meta::Attribute:
     file: lib/MooseX/AlwaysCoerce.pm
   MooseX::AlwaysCoerce::Role::Meta::Class:
@@ -33,8 +33,9 @@ provides:
 requires:
   Moose: 0
   MooseX::ClassAttribute: 0.24
-  namespace::autoclean: 0
+  Package::Stash: 0.26
+  namespace::autoclean: 0.12
 resources:
   license: http://dev.perl.org/licenses/
   repository: http://git.shadowcat.co.uk/gitweb/gitweb.cgi?p=gitmo/MooseX-AlwaysCoerce.git
-version: 0.15
+version: 0.16
