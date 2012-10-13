@@ -1,5 +1,9 @@
 Revision history for MooseX-AlwaysCoerce
 
+0.18      2012-10-13 16:57:07 PDT-0700 (Karen Etheridge)
+    - added missing prerequisite declaration
+    - added lots more metadata; kwalitee should be improved
+
 0.17      2012-06-01 17:52:39 UTC+0000
     - conversion to Dist::Zilla
 

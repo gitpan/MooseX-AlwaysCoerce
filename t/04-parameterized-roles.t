@@ -9,6 +9,9 @@ use Test::Requires {
     'MooseX::Role::Parameterized' => 0.25,
 };
 
+plan tests => 12;
+use Test::NoWarnings 1.04 ':early';
+
 eval <<'EOF';
     package Role;
     use MooseX::Role::Parameterized 0.25;
@@ -45,8 +48,6 @@ eval <<'EOF';
 EOF
 
 
-plan tests => 12;
-eval 'use Test::NoWarnings';
 
 ok( (my $instance = MyClass->new), 'instance' );
 

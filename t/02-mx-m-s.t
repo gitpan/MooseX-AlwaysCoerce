@@ -2,19 +2,14 @@
 use strict;
 use warnings;
 
-use Test::More tests => 3;
-
-use Test::Requires {
-    'MooseX::Method::Signatures' => 0.01,
-};
-
-use Test::Fatal;
-use Test::NoWarnings;
+use Test::More;
 
 {
     package MyClass;
     use Moose;
-    use MooseX::Method::Signatures;
+    use Test::Requires {
+        'MooseX::Method::Signatures' => 0.01,
+    };
     use MooseX::AlwaysCoerce;
     use Moose::Util::TypeConstraints;
 
@@ -30,6 +25,10 @@ use Test::NoWarnings;
     }
 }
 
+use Test::Fatal;
+use Test::NoWarnings 1.04 ':early';
+plan tests => 4;
+
 ok( (my $instance = MyClass->new), 'instance' );
 
 TODO: {
@@ -37,5 +36,6 @@ TODO: {
 
     is( exception {
         is $instance->foo(foo => "text", bar => 42), '4 42';
-    }, undef, 'method called with coerced and uncoerced parameters' );
+    }, undef, 'method called with coerced and uncoerced parameters' )
+        or todo_skip 'is() test never ran', 1;
 }

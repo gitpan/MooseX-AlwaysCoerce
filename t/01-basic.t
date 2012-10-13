@@ -4,7 +4,7 @@ use warnings;
 
 use Test::More tests => 16;
 use Test::Fatal;
-use Test::NoWarnings;
+use Test::NoWarnings 1.04 ':early';
 
 {
     package MyClass;

@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-
+use 5.006;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -12,10 +12,13 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "Automatically enable coercions for Moose attributes",
   "AUTHOR" => "Rafael Kitover <rkitover\@cpan.org>, Michael G. Schwern <mschwern\@cpan.org>, Karen Etheridge <ether\@cpan.org>",
   "BUILD_REQUIRES" => {
+    "File::Find" => 0,
+    "File::Temp" => 0,
     "Test::CheckDeps" => "0.002",
     "Test::Fatal" => 0,
     "Test::More" => "0.88",
-    "Test::NoWarnings" => "1.04"
+    "Test::NoWarnings" => "1.04",
+    "Test::Requires" => 0
   },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
@@ -27,11 +30,17 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Carp" => 0,
     "Moose" => 0,
+    "Moose::Exporter" => 0,
+    "Moose::Role" => 0,
+    "Moose::Util::MetaRole" => 0,
+    "Moose::Util::TypeConstraints" => 0,
     "MooseX::ClassAttribute" => "0.24",
     "Package::Stash" => "0.26",
-    "namespace::autoclean" => "0.12"
+    "namespace::autoclean" => "0.12",
+    "strict" => 0,
+    "warnings" => 0
   },
-  "VERSION" => "0.17",
+  "VERSION" => "0.18",
   "test" => {
     "TESTS" => "t/*.t"
   }
