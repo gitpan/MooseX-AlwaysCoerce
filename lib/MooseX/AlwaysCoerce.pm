@@ -3,9 +3,9 @@ BEGIN {
   $MooseX::AlwaysCoerce::AUTHORITY = 'cpan:RKITOVER';
 }
 {
-  $MooseX::AlwaysCoerce::VERSION = '0.19';
+  $MooseX::AlwaysCoerce::VERSION = '0.20';
 }
-# git description: v0.18-9-gbb4a98d
+# git description: v0.19-1-ge5e8138
 
 # ABSTRACT: Automatically enable coercions for Moose attributes
 
@@ -28,9 +28,9 @@ BEGIN {
   $MooseX::AlwaysCoerce::Role::Meta::Attribute::AUTHORITY = 'cpan:RKITOVER';
 }
 {
-  $MooseX::AlwaysCoerce::Role::Meta::Attribute::VERSION = '0.19';
+  $MooseX::AlwaysCoerce::Role::Meta::Attribute::VERSION = '0.20';
 }
-# git description: v0.18-9-gbb4a98d
+# git description: v0.19-1-ge5e8138
 
     use namespace::autoclean;
     use Moose::Role;
@@ -52,9 +52,9 @@ BEGIN {
   $MooseX::AlwaysCoerce::Role::Meta::Class::AUTHORITY = 'cpan:RKITOVER';
 }
 {
-  $MooseX::AlwaysCoerce::Role::Meta::Class::VERSION = '0.19';
+  $MooseX::AlwaysCoerce::Role::Meta::Class::VERSION = '0.20';
 }
-# git description: v0.18-9-gbb4a98d
+# git description: v0.19-1-ge5e8138
 
     use namespace::autoclean;
     use Moose::Role;
@@ -119,7 +119,7 @@ MooseX::AlwaysCoerce - Automatically enable coercions for Moose attributes
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 SYNOPSIS
 

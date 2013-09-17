@@ -1,5 +1,8 @@
 Revision history for MooseX-AlwaysCoerce
 
+0.20      2013-09-17 01:32:52Z (Karen Etheridge)
+    - fixed bad test plan
+
 0.19      2013-09-17 01:29:18Z (Karen Etheridge)
     - warnings tests bypassed during installation
     - repository has moved to the GitHub Moose organization

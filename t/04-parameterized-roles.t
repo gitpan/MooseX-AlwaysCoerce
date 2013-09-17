@@ -7,7 +7,6 @@ use Test::Requires {
     'MooseX::Role::Parameterized' => 0.25,
 };
 
-plan tests => 12;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 eval <<'EOF';
@@ -86,3 +85,5 @@ ok( (my $instance = MyClass->new), 'instance' );
         is $instance->untyped_class_attr, 10;
     }, undef, 'set untyped class attribute' );
 }
+
+done_testing;
