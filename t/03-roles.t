@@ -1,10 +1,9 @@
-#!/usr/bin/env perl
 use strict;
 use warnings;
 
-use Test::More tests => 16;
+use Test::More;
 use Test::Fatal;
-use Test::NoWarnings 1.04 ':early';
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 {
     package MyRole;
@@ -79,3 +78,5 @@ is( exception {
     $instance->untyped_class_attr(10);
     is $instance->untyped_class_attr, 10;
 }, undef, 'set untyped class attribute' );
+
+done_testing;

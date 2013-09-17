@@ -1,10 +1,9 @@
-#!/usr/bin/env perl
 use strict;
 use warnings;
 
-use Test::More tests => 16;
+use Test::More;
 use Test::Fatal;
-use Test::NoWarnings 1.04 ':early';
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 {
     package MyClass;
@@ -101,3 +100,5 @@ is(
     undef,
     'set untyped class attribute',
 );
+
+done_testing;

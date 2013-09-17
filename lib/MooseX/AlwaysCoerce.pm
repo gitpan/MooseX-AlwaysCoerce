@@ -1,4 +1,13 @@
 package MooseX::AlwaysCoerce;
+BEGIN {
+  $MooseX::AlwaysCoerce::AUTHORITY = 'cpan:RKITOVER';
+}
+{
+  $MooseX::AlwaysCoerce::VERSION = '0.19';
+}
+# git description: v0.18-9-gbb4a98d
+
+# ABSTRACT: Automatically enable coercions for Moose attributes
 
 use strict;
 use warnings;
@@ -12,45 +21,17 @@ use Carp;
 
 Moose::Exporter->setup_import_methods;
 
-=head1 NAME
-
-MooseX::AlwaysCoerce - Automatically enable coercions for Moose attributes
-
-=head1 VERSION
-
-Version 0.16
-
-=cut
-
-our $VERSION = '0.16';
-
-=head1 SYNOPSIS
-
-    package MyClass;
-
-    use Moose;
-    use MooseX::AlwaysCoerce;
-    use MyTypeLib 'SomeType';
-
-    has foo => (is => 'rw', isa => SomeType); # coerce => 1 automatically added
-
-    # same, MooseX::ClassAttribute is automatically applied
-    class_has bar => (is => 'rw', isa => SomeType);
-
-=head1 DESCRIPTION
-
-Have you ever spent an hour or more trying to figure out "WTF, why did my
-coercion not run?" only to find out that you forgot C<< coerce => 1 >> ?
-
-Just load this module in your L<Moose> class and C<< coerce => 1 >> will be
-enabled for every attribute and class attribute automatically.
-
-Use C<< coerce => 0 >> to disable a coercion explicitly.
-
-=cut
 
 {
     package MooseX::AlwaysCoerce::Role::Meta::Attribute;
+BEGIN {
+  $MooseX::AlwaysCoerce::Role::Meta::Attribute::AUTHORITY = 'cpan:RKITOVER';
+}
+{
+  $MooseX::AlwaysCoerce::Role::Meta::Attribute::VERSION = '0.19';
+}
+# git description: v0.18-9-gbb4a98d
+
     use namespace::autoclean;
     use Moose::Role;
 
@@ -67,6 +48,14 @@ Use C<< coerce => 0 >> to disable a coercion explicitly.
     };
 
     package MooseX::AlwaysCoerce::Role::Meta::Class;
+BEGIN {
+  $MooseX::AlwaysCoerce::Role::Meta::Class::AUTHORITY = 'cpan:RKITOVER';
+}
+{
+  $MooseX::AlwaysCoerce::Role::Meta::Class::VERSION = '0.19';
+}
+# git description: v0.18-9-gbb4a98d
+
     use namespace::autoclean;
     use Moose::Role;
     use Moose::Util::TypeConstraints;
@@ -112,14 +101,50 @@ sub init_meta {
     goto $init_meta;
 }
 
-=head1 AUTHOR
+1;
+# vim:et sts=4 sw=4 tw=0:
 
-Rafael Kitover, C<< <rkitover at cpan.org> >>
+__END__
 
-=head1 CONTRIBUTORS
+=pod
 
-Schwern: Michael G. Schwern <mschwern@cpan.org>
-Ether: Karen Etheridge <ether@cpan.org>
+=encoding utf-8
+
+=for :stopwords Rafael Kitover <rkitover@cpan.org> Jesse Luehrs Karen Etheridge Michael G.
+Schwern coercions AnnoCPAN Rolsky
+
+=head1 NAME
+
+MooseX::AlwaysCoerce - Automatically enable coercions for Moose attributes
+
+=head1 VERSION
+
+version 0.19
+
+=head1 SYNOPSIS
+
+    package MyClass;
+
+    use Moose;
+    use MooseX::AlwaysCoerce;
+    use MyTypeLib 'SomeType';
+
+    has foo => (is => 'rw', isa => SomeType); # coerce => 1 automatically added
+
+    # same, MooseX::ClassAttribute is automatically applied
+    class_has bar => (is => 'rw', isa => SomeType);
+
+=head1 DESCRIPTION
+
+Have you ever spent an hour or more trying to figure out "Hey, why did my
+coercion not run?" only to find out that you forgot C<< coerce => 1 >> ?
+
+Just load this module in your L<Moose> class and C<< coerce => 1 >> will be
+enabled for every attribute and class attribute automatically.
+
+Use C<< coerce => 0 >> to disable a coercion explicitly.
+
+=for Pod::Coverage init_meta
 
 =head1 BUGS
 
@@ -157,14 +182,33 @@ My own stupidity, for inspiring me to write this module.
 
 Dave Rolsky, for telling me how to do it the L<Moose> way.
 
-=head1 COPYRIGHT & LICENSE
+=head1 AUTHOR
 
-Copyright (c) 2009-2010 Rafael Kitover
+Rafael Kitover <rkitover@cpan.org>
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Rafael Kitover <rkitover@cpan.org>.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=head1 CONTRIBUTORS
+
+=over 4
+
+=item *
+
+Jesse Luehrs <doy@tozt.net>
+
+=item *
+
+Karen Etheridge <ether@cpan.org>
+
+=item *
+
+Michael G. Schwern <schwern@pobox.com>
+
+=back
 
 =cut
-
-1; # End of MooseX::AlwaysCoerce
-# vim:et sts=4 sw=4 tw=0:
