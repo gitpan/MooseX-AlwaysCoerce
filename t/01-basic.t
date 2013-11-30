@@ -1,9 +1,9 @@
 use strict;
-use warnings;
+use warnings FATAL => 'all';
 
 use Test::More;
-use Test::Fatal;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
+use Test::Fatal;
 
 {
     package MyClass;

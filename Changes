@@ -1,5 +1,8 @@
 Revision history for MooseX-AlwaysCoerce
 
+0.21      2013-11-30 18:13:01Z
+    - re-release to fix compile test
+
 0.20      2013-09-17 01:32:52Z (Karen Etheridge)
     - fixed bad test plan
 

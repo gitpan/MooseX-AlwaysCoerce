@@ -1,13 +1,13 @@
 use strict;
-use warnings;
+use warnings FATAL => 'all';
+
 use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Test::Fatal;
 
 use Test::Requires {
     'MooseX::Role::Parameterized' => 0.25,
 };
-
-use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 eval <<'EOF';
     package Role;

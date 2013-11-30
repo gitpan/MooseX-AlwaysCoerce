@@ -1,14 +1,13 @@
 use strict;
-use warnings;
+use warnings FATAL => 'all';
 
 use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 {
     package MyClass;
     use Moose;
-    use Test::Requires {
-        'MooseX::Method::Signatures' => 0.01,
-    };
+    use Test::Requires 'MooseX::Method::Signatures';
     use MooseX::AlwaysCoerce;
     use Moose::Util::TypeConstraints;
 
@@ -25,7 +24,6 @@ use Test::More;
 }
 
 use Test::Fatal;
-use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 ok( (my $instance = MyClass->new), 'instance' );
 

@@ -1,7 +1,7 @@
 
 
 This archive contains the distribution MooseX-AlwaysCoerce,
-version 0.20:
+version 0.21:
 
   Automatically enable coercions for Moose attributes
 

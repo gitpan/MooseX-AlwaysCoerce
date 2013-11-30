@@ -1,12 +1,12 @@
 package MooseX::AlwaysCoerce;
+{
+  $MooseX::AlwaysCoerce::VERSION = '0.21';
+}
+# git description: v0.20-7-gd590377
+
 BEGIN {
   $MooseX::AlwaysCoerce::AUTHORITY = 'cpan:RKITOVER';
 }
-{
-  $MooseX::AlwaysCoerce::VERSION = '0.20';
-}
-# git description: v0.19-1-ge5e8138
-
 # ABSTRACT: Automatically enable coercions for Moose attributes
 
 use strict;
@@ -24,14 +24,14 @@ Moose::Exporter->setup_import_methods;
 
 {
     package MooseX::AlwaysCoerce::Role::Meta::Attribute;
+{
+  $MooseX::AlwaysCoerce::Role::Meta::Attribute::VERSION = '0.21';
+}
+# git description: v0.20-7-gd590377
+
 BEGIN {
   $MooseX::AlwaysCoerce::Role::Meta::Attribute::AUTHORITY = 'cpan:RKITOVER';
 }
-{
-  $MooseX::AlwaysCoerce::Role::Meta::Attribute::VERSION = '0.20';
-}
-# git description: v0.19-1-ge5e8138
-
     use namespace::autoclean;
     use Moose::Role;
 
@@ -48,14 +48,14 @@ BEGIN {
     };
 
     package MooseX::AlwaysCoerce::Role::Meta::Class;
+{
+  $MooseX::AlwaysCoerce::Role::Meta::Class::VERSION = '0.21';
+}
+# git description: v0.20-7-gd590377
+
 BEGIN {
   $MooseX::AlwaysCoerce::Role::Meta::Class::AUTHORITY = 'cpan:RKITOVER';
 }
-{
-  $MooseX::AlwaysCoerce::Role::Meta::Class::VERSION = '0.20';
-}
-# git description: v0.19-1-ge5e8138
-
     use namespace::autoclean;
     use Moose::Role;
     use Moose::Util::TypeConstraints;
@@ -108,7 +108,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =for :stopwords Rafael Kitover <rkitover@cpan.org> Jesse Luehrs Karen Etheridge Michael G.
 Schwern coercions AnnoCPAN Rolsky
@@ -119,7 +119,7 @@ MooseX::AlwaysCoerce - Automatically enable coercions for Moose attributes
 
 =head1 VERSION
 
-version 0.20
+version 0.21
 
 =head1 SYNOPSIS
 
